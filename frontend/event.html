@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management</title>
+    <link rel="stylesheet" href="event.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="logo">EventHub</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search events...">
+                <button>🔍</button>
+            </div>
+        </div>
+        <button class="create-event">+ Create Event</button>
+    </nav>
+
+    <!-- Event Container -->
+    <div class="event-container" id="eventContainer"></div>
+
+    <!-- Create Event Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🎉 Create New Event</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="eventForm">
+                <div class="form-group">
+                    <label for="eventName" class="required-field">📝 Event Name</label>
+                    <input type="text" id="eventName" required placeholder="Enter event name">
+                </div>
+
+                <div class="form-group">
+                    <label for="eventDate" class="required-field">📅 Event Date</label>
+                    <input type="datetime-local" id="eventDate" required>
+                    <div class="date-error">Please select a future date and time</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="eventLocation" class="required-field">📍 Location</label>
+                    <input type="text" id="eventLocation" required placeholder="Enter location">
+                </div>
+
+                <div class="form-group">
+                    <label for="eventAttendees" class="required-field">👥 Expected Attendees</label>
+                    <input type="number" id="eventAttendees" required placeholder="Enter number of attendees" min="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="eventImage">🖼️ Event Image</label>
+                    <input type="file" id="eventImage" accept="image/*">
+                </div>
+
+                <button type="submit" class="submit-btn">Create Event</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update Event Modal -->
+    <div id="updateModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>✏️ Update Event</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="updateForm">
+                <div class="form-group">
+                    <label for="updateEventName" class="required-field">📝 Event Name</label>
+                    <input type="text" id="updateEventName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="updateEventDate" class="required-field">📅 Event Date</label>
+                    <input type="datetime-local" id="updateEventDate" required>
+                    <div class="date-error">Please select a future date and time</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="updateEventLocation" class="required-field">📍 Location</label>
+                    <input type="text" id="updateEventLocation" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="updateEventAttendees" class="required-field">👥 Expected Attendees</label>
+                    <input type="number" id="updateEventAttendees" required min="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="updateEventImage">🖼️ Event Image (Optional)</label>
+                    <input type="file" id="updateEventImage" accept="image/*">
+                </div>
+
+                <button type="submit" class="submit-btn">Update Event</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Status Modal -->
+    <div id="statusModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📊 Update Event Status</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="statusForm">
+                <div class="form-group">
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="status" value="pending" checked>
+                            🕒 Pending
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="status" value="completed">
+                            ✅ Completed
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Update Status</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="event.js"></script>
+</body>
+
+</html>

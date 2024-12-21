@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="event.html">Events</a></li>
+            <li><a href="/attendees">Attendees</a></li>
+            <li><a href="/event-tracks">Event Tracks</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="background">
+        <div class="dashboard-container">
+            <h1>Welcome back, <span id="user-name">User</span>!</h1>
+
+            <div class="overview">
+                <h2>Overview</h2>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>Events</h3>
+                        <p id="event-count">0</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Attendees</h3>
+                        <p id="attendee-count">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <h2>Progress</h2>
+                <!-- Event Completion Indicator -->
+                <div class="progress-item">
+                    <label for="event-progress">Event Completion</label>
+                    <svg class="circular-progress" id="event-progress" viewBox="0 0 36 36">
+                        <path class="circle-background" fill="none" stroke="#e6e6e6" stroke-width="2"
+                            d="M18 2.0845a15.9155 15.9155 0 1 1 0 31.831 15.9155 15.9155 0 0 1 0-31.831"></path>
+                        <path class="circle-progress" fill="none" stroke="#4db8ff" stroke-width="2"
+                            stroke-dasharray="100, 100" stroke-dashoffset="100"
+                            d="M18 2.0845a15.9155 15.9155 0 1 1 0 31.831 15.9155 15.9155 0 0 1 0-31.831"></path>
+                    </svg>
+                </div>
+                <!-- Attendee Registration Indicator -->
+                <div class="progress-item">
+                    <label for="attendee-progress">Attendee Registration</label>
+                    <svg class="circular-progress" id="attendee-progress" viewBox="0 0 36 36">
+                        <path class="circle-background" fill="none" stroke="#e6e6e6" stroke-width="2"
+                            d="M18 2.0845a15.9155 15.9155 0 1 1 0 31.831 15.9155 15.9155 0 0 1 0-31.831"></path>
+                        <path class="circle-progress" fill="none" stroke="#4db8ff" stroke-width="2"
+                            stroke-dasharray="100, 100" stroke-dashoffset="100"
+                            d="M18 2.0845a15.9155 15.9155 0 1 1 0 31.831 15.9155 15.9155 0 0 1 0-31.831"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="actions">
+                <!-- Link to Event Management Page -->
+                <a href="/event.html" id="create-event-btn">
+                    <button>Create New Event</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="dash.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="background">
+        <header class="header">
+            <h1 class="dashboard-title">DASHBOARD</h1>
+            <p class="subtitle">FOR EVENT MANAGEMENT</p>
+        </header>
+        <div class="center-card">
+            <div class="card-content">
+                <h2 class="welcome-title">Welcome to<br>Event Management</h2>
+                <p class="description">
+                    Manage your events effortlessly with our intuitive dashboard. Plan, track, and execute events
+                    seamlessly.
+                </p>
+                <button class="btn" id="signin-button">Sign In</button>
+            </div>
+        </div>
+        <footer class="footer">
+            <p>Vaishnavi Jamadarkhana. &copy; 2024 | All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Modal (Pop-up) -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <!-- login form -->
+            <div id="login-form-container">
+                <h2>Login</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+                <p>Don't have an account? <a href="#" id="show-signup-form">Sign Up</a></p>
+            </div>
+
+
+            <!-- Sign Up Form -->
+            <div id="signup-form-container" style="display: none;">
+                <h2>Sign Up</h2>
+                <form id="signup-form">
+                    <div class="form-group">
+                        <label for="signup-name">Name:</label>
+                        <input type="text" id="signup-name" name="signup-name" placeholder="Enter your full name"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email:</label>
+                        <input type="email" id="signup-email" name="signup-email" placeholder="Enter your email"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password:</label>
+                        <input type="password" id="signup-password" name="signup-password"
+                            placeholder="Create a password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-confirm-password">Confirm Password:</label>
+                        <input type="password" id="signup-confirm-password" name="signup-confirm-password"
+                            placeholder="Confirm your password" required>
+                    </div>
+                    <button type="submit" class="btn">Sign Up</button>
+                </form>
+                <p>Already have an account? <a href="#" id="show-login-form">Login</a></p>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
