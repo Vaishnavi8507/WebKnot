@@ -84,7 +84,7 @@ The Event Management Dashboard is a web application designed to help users manag
           "location": "Mysore",
           "description":"Technical",
       },
-      ...
+      
   ]
   ```
 
@@ -129,7 +129,7 @@ The Event Management Dashboard is a web application designed to help users manag
           "assigned event": "Tech Conference",
           "assigned task":"Crowd management"
       },
-      ...
+      
   ]
   ```
 
@@ -190,7 +190,7 @@ The Event Management Dashboard is a web application designed to help users manag
    Start the backend server:
 
    ```bash
-   npm start
+   node server.js
    ```
 
 5. **Run the Frontend**
