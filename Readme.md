@@ -4,7 +4,7 @@
 
 ## Description
 
-The Event Management Dashboard is a web application designed to help users manage events and attendees efficiently. Users can view event statistics, track event completion progress, and manage attendee information. The application provides a user-friendly interface for managing events and attendees, making it easier to organize and oversee various events.
+The Event Management Dashboard is a web application designed to help users manage events, attendees and tracks the events efficiently. Users can view event statistics, track event completion progress, and manage attendee information. The application provides a user-friendly interface for managing events and attendees, making it easier to organize and oversee various events.
 
 ## Tech Stack
 
