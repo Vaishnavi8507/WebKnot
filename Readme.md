@@ -74,8 +74,4 @@ The Event Management Dashboard is a web application designed to help users manag
 
 Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-![GitHub](https://img.icons8.com/ios/452/github.png) <!-- Example icon -->
