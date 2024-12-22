@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .profile-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2em;
+            text-align: center;
+            color: #6a0ced;
+        }
+
+        .profile-details {
+            margin: 20px 0;
+            font-size: 1.1em;
+        }
+
+        .logout-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #8c34f1;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #6a1b9a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="profile-container">
+        <h1>User Profile</h1>
+
+        <div class="profile-details">
+            <p><strong>Name:</strong> <span id="user-name">Loading...</span></p>
+            <p><strong>Email:</strong> <span id="user-email">Loading...</span></p>
+        </div>
+
+        <button id="logout-btn" class="logout-btn">Logout</button>
+    </div>
+
+    <script>
+        // Fetch the user's profile details using the JWT token
+        async function fetchUserProfile() {
+            try {
+                const token = localStorage.getItem('authToken'); // Assuming token is stored in localStorage
+                if (!token) {
+                    window.location.href = '/login'; // Redirect to login if not authenticated
+                    return;
+                }
+
+                const response = await fetch('/profile', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const user = data.user;
+
+                    // Populate the profile details
+                    document.getElementById('user-name').textContent = user.name;
+                    document.getElementById('user-email').textContent = user.email;
+                } else {
+                    alert('Failed to fetch user profile. Please login again.');
+                    window.location.href = '/login'; // Redirect if token is invalid or expired
+                }
+            } catch (error) {
+                console.error('Error fetching profile:', error);
+                alert('An error occurred while fetching your profile.');
+            }
+        }
+
+        // Call the function to fetch the user profile on page load
+        window.onload = fetchUserProfile;
+
+        // Logout functionality
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            localStorage.removeItem('authToken'); // Remove token from localStorage
+            window.location.href = '/login'; // Redirect to login page
+        });
+    </script>
+</body>
+
+</html>

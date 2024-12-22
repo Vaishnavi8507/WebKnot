@@ -14,10 +14,9 @@
         <ul>
             <li><a href="/dashboard">Dashboard</a></li>
             <li><a href="event.html">Events</a></li>
-            <li><a href="/attendees">Attendees</a></li>
-            <li><a href="/event-tracks">Event Tracks</a></li>
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="/logout">Logout</a></li>
+            <li><a href="attendee.html">Attendees</a></li>
+            <li><a href="task.html">Event Tracks</a></li>
+            <li><a href="javascript:void(0);" onclick="logoutUser()">Logout</a></li> <!-- Logout button -->
         </ul>
     </nav>
 
@@ -34,35 +33,15 @@
                         <p id="event-count">0</p>
                     </div>
                     <div class="stat-item">
-                        <h3>Attendees</h3>
-                        <p id="attendee-count">0</p>
+                        <h3>Event Completion</h3>
+                        <svg class="circular-progress" id="event-progress" viewBox="0 0 36 36">
+                            <path class="circle-background" fill="none" stroke="#e6e6e6" stroke-width="2"
+                                d="M18 2.0845a15.9155 15.9155 0 1 1 0 31.831 15.9155 15.9155 0 0 1 0-31.831"></path>
+                            <path class="circle-progress" fill="none" stroke="#4db8ff" stroke-width="2"
+                                stroke-dasharray="100, 100" stroke-dashoffset="100"
+                                d="M18 2.0845a15.9155 15.9155 0 1 1 0 31.831 15.9155 15.9155 0 0 1 0-31.831"></path>
+                        </svg>
                     </div>
-                </div>
-            </div>
-
-            <div class="progress-section">
-                <h2>Progress</h2>
-                <!-- Event Completion Indicator -->
-                <div class="progress-item">
-                    <label for="event-progress">Event Completion</label>
-                    <svg class="circular-progress" id="event-progress" viewBox="0 0 36 36">
-                        <path class="circle-background" fill="none" stroke="#e6e6e6" stroke-width="2"
-                            d="M18 2.0845a15.9155 15.9155 0 1 1 0 31.831 15.9155 15.9155 0 0 1 0-31.831"></path>
-                        <path class="circle-progress" fill="none" stroke="#4db8ff" stroke-width="2"
-                            stroke-dasharray="100, 100" stroke-dashoffset="100"
-                            d="M18 2.0845a15.9155 15.9155 0 1 1 0 31.831 15.9155 15.9155 0 0 1 0-31.831"></path>
-                    </svg>
-                </div>
-                <!-- Attendee Registration Indicator -->
-                <div class="progress-item">
-                    <label for="attendee-progress">Attendee Registration</label>
-                    <svg class="circular-progress" id="attendee-progress" viewBox="0 0 36 36">
-                        <path class="circle-background" fill="none" stroke="#e6e6e6" stroke-width="2"
-                            d="M18 2.0845a15.9155 15.9155 0 1 1 0 31.831 15.9155 15.9155 0 0 1 0-31.831"></path>
-                        <path class="circle-progress" fill="none" stroke="#4db8ff" stroke-width="2"
-                            stroke-dasharray="100, 100" stroke-dashoffset="100"
-                            d="M18 2.0845a15.9155 15.9155 0 1 1 0 31.831 15.9155 15.9155 0 0 1 0-31.831"></path>
-                    </svg>
                 </div>
             </div>
 
@@ -76,6 +55,13 @@
     </div>
 
     <script src="dash.js"></script>
+    <script>
+        // Logout function
+        function logoutUser() {
+            localStorage.removeItem('authToken');  // Remove token from localStorage
+            window.location.href = '/';  // Redirect to homepage (login page or initial page)
+        }
+    </script>
 </body>
 
 </html>

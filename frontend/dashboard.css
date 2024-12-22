@@ -104,21 +104,12 @@ h1 {
     color: #333;
 }
 
-/* Progress Section */
-.progress-section {
-    margin-top: 30px;
-}
-
-.progress-item {
-    margin-bottom: 30px;
-}
-
+/* Event Progress Section */
 .circular-progress {
-    width: 120px;
-    height: 120px;
+    width: 40px;
+    height: 40px;
     transform: rotate(-90deg);
     /* Rotate to start stroke from top */
-    margin: 0 auto;
 }
 
 .circle-background {
@@ -126,7 +117,7 @@ h1 {
 }
 
 .circle-progress {
-    stroke: #4db8ff;
+    stroke: #6d6df6;
     stroke-linecap: round;
     transition: stroke-dashoffset 1s;
 }
@@ -139,7 +130,7 @@ h1 {
 button {
     padding: 12px 25px;
     font-size: 16px;
-    background-color: #007BFF;
+    background-color: #837be9;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -150,7 +141,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #8abdf4;
     transform: scale(1.05);
 }
 

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', async() => {
+document.addEventListener('DOMContentLoaded', async () => {
     const authToken = localStorage.getItem('authToken');
     if (!authToken) {
         alert('You must log in first!');
@@ -20,47 +20,28 @@ document.addEventListener('DOMContentLoaded', async() => {
             // Set the username in the welcome message
             document.getElementById('user-name').textContent = data.user.name;
 
-            // Set the event and attendee counts
-            const eventCount = data.events ?.length || 0; // Corrected optional chaining
-            const attendeeCount = data.attendees ?.length || 0; // Corrected optional chaining
-
-            document.getElementById('event-count').textContent = eventCount;
-            document.getElementById('attendee-count').textContent = attendeeCount;
-
-            // Update circular progress indicators
-            const totalEvents = 10; // Maximum number of events
-            const totalAttendees = 100; // Maximum number of attendees
-
-            const eventProgress = (eventCount / totalEvents) * 100;
-            const attendeeProgress = (attendeeCount / totalAttendees) * 100;
-
-            // Update event progress
-            const eventProgressCircle = document.querySelector('#event-progress .circle-progress');
-            const eventProgressOffset = 100 - eventProgress; // Stroke dash offset calculation
-            eventProgressCircle.style.strokeDashoffset = eventProgressOffset;
-
-            // Update attendee progress
-            const attendeeProgressCircle = document.querySelector('#attendee-progress .circle-progress');
-            const attendeeProgressOffset = 100 - attendeeProgress; // Stroke dash offset calculation
-            attendeeProgressCircle.style.strokeDashoffset = attendeeProgressOffset;
+            // Set the attendee count (We no longer have the element, but let's keep it for potential future use)
+            const attendeeCount = data.attendees?.length || 0; // Corrected optional chaining
+            // document.getElementById('attendee-count').textContent = attendeeCount; // Remove this line if not used
 
         } else {
-            alert(data.message); // Handle errors like token expiry
-            localStorage.removeItem('authToken'); // Remove invalid token
-            window.location.href = '/'; // Redirect to login page
+            throw new Error(data.message || 'Error fetching profile');
         }
     } catch (error) {
-        alert('Error fetching user data: ' + error.message);
-        window.location.href = '/'; // Redirect to login page on error
+        console.error('Error:', error);
     }
 
-    // Function to update the event count display
-    function updateEventCountDisplay() {
-        const eventCountElement = document.getElementById('eventCount');
-        const eventCount = Number(localStorage.getItem('eventCount')) || 0; // Convert to number
-        eventCountElement.textContent = eventCount; // Update the display
-    }
-
-    // Call the function to update the count
     updateEventCountDisplay();
 });
+
+function updateEventCountDisplay() {
+    const events = JSON.parse(localStorage.getItem('events')) || [];
+    const eventCount = events.length; // Count of events
+    document.getElementById('event-count').textContent = eventCount;
+
+    const totalEvents = 10;
+    const eventProgress = (eventCount / totalEvents) * 100;
+    const eventProgressCircle = document.querySelector('#event-progress .circle-progress');
+    const eventProgressOffset = 100 - eventProgress;
+    eventProgressCircle.style.strokeDashoffset = eventProgressOffset;
+}

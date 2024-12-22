@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendee Management</title>
+    <link rel="stylesheet" href="attendee.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="event.html">Events</a></li>
+            <li><a href="attendee.html">Attendees</a></li>
+            <li><a href="task.html">Tasks</a></li>
+            <li><a href="javascript:void(0);" onclick="logoutUser()">Logout</a></li> <!-- Logout button -->
+        </ul>
+    </nav>
+
+    <!-- Attendee Management -->
+    <div class="container">
+        <h1>Attendee Management</h1>
+
+        <!-- Filter by Event -->
+        <div class="filter">
+            <label for="event-filter">Filter by Event:</label>
+            <select id="event-filter">
+                <option value="">All Events</option>
+                <!-- Events will be dynamically populated here -->
+            </select>
+        </div>
+
+        <button id="add-attendee-btn" class="btn">Add Attendee</button> <!-- Button below the heading -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Assigned Event</th>
+                    <th>Assigned Task</th> <!-- Updated column for task -->
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="attendee-list">
+                <!-- Rows will be dynamically inserted -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Attendee Modal -->
+    <div id="add-attendee-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Add Attendee</h2>
+            <form id="add-attendee-form">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="attendee-name" placeholder="Name" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="attendee-email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="text" id="attendee-contact" placeholder="Contact" required>
+                </div>
+                <div class="input-group">
+                    <select id="assigned-event" required>
+                        <!-- Events will be dynamically added here -->
+                    </select>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="assigned-task" placeholder="Assigned Task" required>
+                    <!-- Text field for task -->
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn">Add Attendee</button>
+                    <button type="button" id="close-modal" class="btn secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="attendee.js"></script>
+    <script>
+        // Logout function
+        function logoutUser() {
+            localStorage.removeItem('authToken');  // Remove token from localStorage
+            window.location.href = '/';  // Redirect to homepage (login page or initial page)
+        }
+    </script>
+</body>
+
+</html>

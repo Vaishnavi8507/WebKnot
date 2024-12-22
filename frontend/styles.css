@@ -79,9 +79,10 @@ body {
 
 /* Button Styling */
 .btn {
-    background-color: #007bff;
+    background-color: #7c6ef9;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 15px;
+    /* Reduced horizontal padding to reduce width */
     border: none;
     border-radius: 5px;
     font-size: 1rem;
@@ -91,7 +92,7 @@ body {
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #a092f7;
 }
 
 /* Footer Section */
@@ -193,5 +194,5 @@ body {
 
 /* Additional Button Hover Effects */
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #b592f1;
 }

@@ -123,7 +123,7 @@ eventForm.onsubmit = async(e) => {
         name: document.getElementById('eventName').value,
         date: document.getElementById('eventDate').value,
         location: document.getElementById('eventLocation').value,
-        attendees: document.getElementById('eventAttendees').value,
+        attendees: document.getElementById('eventDesc').value,
         image: imageBase64,
         status: 'pending',
         createdAt: currentTime
@@ -158,7 +158,7 @@ updateForm.onsubmit = async(e) => {
             name: document.getElementById('updateEventName').value,
             date: document.getElementById('updateEventDate').value,
             location: document.getElementById('updateEventLocation').value,
-            attendees: document.getElementById('updateEventAttendees').value
+            attendees: document.getElementById('updateEventDesc').value
         };
 
         const newImage = document.getElementById('updateEventImage').files[0];
@@ -256,7 +256,7 @@ function createEventCard(eventData) {
                 <div class="event-info">
                     <p><strong>📅 Date:</strong> ${formattedDate}</p>
                     <p><strong>📍 Location:</strong> ${eventData.location}</p>
-                    <p><strong>👥 Expected Attendees:</strong> ${eventData.attendees}</p>
+                    <p><strong>👥 Description:</strong> ${eventData.attendees}</p>
                 </div>
             </div>
         </div>
@@ -318,10 +318,33 @@ function showUpdateModal(eventCard) {
         document.getElementById('updateEventName').value = event.name;
         document.getElementById('updateEventDate').value = event.date;
         document.getElementById('updateEventLocation').value = event.location;
-        document.getElementById('updateEventAttendees').value = event.attendees;
+        document.getElementById('updateEventDesc').value = event.attendees;
         updateModal.style.display = 'block';
     }
 }
+
+// Event search function
+function handleSearch() {
+    const searchQuery = document.querySelector('.search-bar input').value.toLowerCase();
+    const filteredEvents = events.filter(event => 
+        event.name.toLowerCase().includes(searchQuery) || 
+        event.location.toLowerCase().includes(searchQuery) || 
+        event.attendees.toLowerCase().includes(searchQuery)
+    );
+    
+    // Clear current event container
+    eventContainer.innerHTML = '';
+
+    // Display filtered events
+    filteredEvents.forEach(eventData => {
+        const eventCard = createEventCard(eventData);
+        eventContainer.insertAdjacentHTML('beforeend', eventCard);
+    });
+}
+
+// Add event listener to search bar
+document.querySelector('.search-bar input').addEventListener('input', handleSearch);
+
 
 // Function to show toast notifications
 function showToast(message) {

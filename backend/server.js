@@ -8,8 +8,8 @@ require('dotenv').config(); // Load environment variables
 
 const app = express();
 
-// Middleware
-app.use(bodyParser.json());
+// Middleware to parse JSON request bodies
+app.use(express.json()); // Use express's built-in JSON parser (instead of body-parser)
 
 // Serve static files (like index.html)
 app.use(express.static(path.join(__dirname, '../frontend'))); // Correct path to 'frontend' folder
@@ -22,21 +22,33 @@ const usersFilePath = path.join(__dirname, 'users.json');
 
 // Utility function to read users data from the JSON file
 const getUsersData = () => {
-    if (!fs.existsSync(usersFilePath)) {
-        fs.writeFileSync(usersFilePath, JSON.stringify([])); // Create the file if it doesn't exist
+    try {
+        if (!fs.existsSync(usersFilePath)) {
+            fs.writeFileSync(usersFilePath, JSON.stringify([])); // Create the file if it doesn't exist
+        }
+        const data = fs.readFileSync(usersFilePath);
+        return JSON.parse(data);
+    } catch (error) {
+        console.error('Error reading users data:', error);
+        return [];
     }
-    const data = fs.readFileSync(usersFilePath);
-    return JSON.parse(data);
 };
 
 // Utility function to write users data to the JSON file
 const saveUsersData = (users) => {
-    fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+    try {
+        fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+    } catch (error) {
+        console.error('Error saving users data:', error);
+    }
 };
 
 // User Registration Route
 app.post('/register', async (req, res) => {
     const { name, email, password, confirmPassword } = req.body;
+
+    // Log the received data for debugging
+    console.log(req.body);
 
     // Basic validation
     if (!name || !email || !password || !confirmPassword) {
@@ -124,6 +136,18 @@ app.get('/dashboard', (req, res) => {
 // Catch-all route to serve index.html for any other request
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
+});
+
+// Logout Route
+app.get('/logout', (req, res) => {
+    // Invalidate the token by not passing it back to the client
+    res.json({ message: 'Logout successful' });
+});
+
+// Global error handler for uncaught errors
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).json({ message: 'Something went wrong!' });
 });
 
 // Start the server

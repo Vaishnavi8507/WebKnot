@@ -5,7 +5,6 @@ const loginFormContainer = document.getElementById('login-form-container');
 const signupFormContainer = document.getElementById('signup-form-container');
 const showSignupForm = document.getElementById('show-signup-form');
 const showLoginForm = document.getElementById('show-login-form');
-
 // Open the modal when "Sign In" button is clicked
 signinButton.addEventListener('click', () => {
     modal.style.display = 'flex'; // Show modal
@@ -66,7 +65,6 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
     }
 });
 
-
 // Handle registration
 document.getElementById('signup-form').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -87,6 +85,7 @@ document.getElementById('signup-form').addEventListener('submit', async (e) => {
                 name: data['signup-name'],
                 email: data['signup-email'],
                 password: data['signup-password'],
+                confirmPassword: data['signup-confirm-password'],
             }),
         });
 

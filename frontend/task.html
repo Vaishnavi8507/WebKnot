@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Tracker</title>
+    <link rel="stylesheet" href="task.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Task Tracker</h1>
+        <p class="description">
+            Track and manage the tasks assigned to attendees for upcoming events. Use the table below to monitor
+            progress,
+            deadlines, and task statuses. You can also update the task details as needed.
+        </p>
+
+        <table id="task-list">
+            <thead>
+                <tr>
+                    <th>Attendee Name</th>
+                    <th>Assigned Event</th>
+                    <th>Assigned Task</th>
+                    <th>Deadline</th>
+                    <th>Status</th>
+                    <th>Progress</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="task-list-body">
+                <!-- Dynamic rows for tasks will be populated here -->
+            </tbody>
+        </table>
+        <div id="no-tasks-message" class="no-tasks-message">No tasks available. Please add attendees with tasks.</div>
+    </div>
+
+    <script src="task.js"></script>
+</body>
+
+</html>
