@@ -1,6 +1,6 @@
 # Event Management Dashboard
 
-![Event Management](https://img.icons8.com/ios/452/event-2.png) <!-- Example icon -->
+![Event Management](frontend/images/app.png) 
 
 ## Description
 
